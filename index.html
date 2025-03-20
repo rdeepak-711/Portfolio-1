@@ -229,5 +229,18 @@
     
       gtag('config', 'G-PGJLWDX2TJ');
     </script>
+    <script>
+        fetch('https://api64.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+        console.log("User IP:", data.ip);
+        gtag('event', 'visitor_ip', {
+            event_category: 'visitor_info',
+            event_label: data.ip
+        });
+        })
+        .catch(error => console.error("IP Fetch Error:", error));
+    </script>
+      
 </body>
 </html>
